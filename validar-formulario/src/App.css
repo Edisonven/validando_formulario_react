@@ -2,17 +2,21 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  max-width: 1280px;
   margin: 0 auto;
   text-align: center;
   height: 100vh;
+  background-image: url(../src/assets/fondo-1.jpg);
+  background-size: cover;
+  background-position: center;
 }
 
 .container {
-  border: 1px solid black;
+  border: 1px solid #ffffff69;
   border-radius: 20px;
   padding: 50px;
   width: max-content;
+  color: #fff;
+  backdrop-filter: blur(10px);
 }
 .form__title {
   font-size: 2.2rem;
@@ -31,7 +35,7 @@
 }
 .icon {
   transform: scale(1.6);
-  border: 1px solid black;
+  border: 1px solid #fff;
   border-radius: 50%;
   padding: 5px;
 }
@@ -41,4 +45,13 @@ input {
 .btn-1 {
   margin-top: 20px;
   width: 100%;
+}
+@media (min-width: 576px) {
+  .container {
+    max-width: 600px;
+    width: 100%;
+  }
+  #root {
+    background-position: top;
+  }
 }
