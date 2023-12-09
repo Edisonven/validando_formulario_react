@@ -1,7 +1,7 @@
 import Button from "react-bootstrap/Button";
 const Formulario = () => {
   return (
-    <div className="form__container">
+    <form className="form__container">
       <div className="form-group">
         <input
           type="text"
@@ -28,8 +28,8 @@ const Formulario = () => {
           placeholder="Confirmar contraseña"
         />
       </div>
-      <Button className="btn-1" variant="success">Registrarse</Button>
-    </div>
+      <Button type="submit" className="btn-1" variant="success">Registrarse</Button>
+    </form>
   );
 };
 
