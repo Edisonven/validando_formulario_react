@@ -1,3 +1,4 @@
+import Button from "react-bootstrap/Button";
 const Formulario = () => {
   return (
     <div className="form__container">
@@ -27,6 +28,7 @@ const Formulario = () => {
           placeholder="Confirmar contraseña"
         />
       </div>
+      <Button className="btn-1" variant="success">Registrarse</Button>
     </div>
   );
 };
