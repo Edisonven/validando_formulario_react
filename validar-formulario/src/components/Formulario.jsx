@@ -20,12 +20,11 @@ const Formulario = () => {
     }
     setPasswordError(false);
 
-    if (validEmail.test(email)) {
-      setMailFormatError(false);
-    } else {
+    if (!validEmail.test(email)) {
       setMailFormatError(true);
       return;
     }
+    setMailFormatError(false);
 
     if (password_1.length > 1 && password_1.length < 10) {
       setPasswordMinLength(true);
