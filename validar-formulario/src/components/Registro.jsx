@@ -1,5 +1,6 @@
 import Formulario from "./Formulario";
 import SocialButtons from "./SocialButton";
+
 const Registro = () => {
   return (
     <div className="container">

@@ -46,6 +46,11 @@ input {
   margin-top: 20px;
   width: 100%;
 }
+.alert__contraseña {
+  margin-top: 20px;
+}
+
+/*VERSIÓN ESCRITORIO*/
 @media (min-width: 576px) {
   .container {
     max-width: 600px;
