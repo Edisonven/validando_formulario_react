@@ -1,5 +1,6 @@
 import Button from "react-bootstrap/Button";
 import { useState } from "react";
+
 const Formulario = () => {
   const [nombre, setNombre] = useState("");
   const [email, setEmail] = useState("");
