@@ -7,16 +7,33 @@ const Formulario = () => {
   const [email, setEmail] = useState("");
   const [password_1, setPasswrod_1] = useState("");
   const [password_2, setPassword_2] = useState("");
-  const [error, setError] = useState(false);
+  const [passwordError, setPasswordError] = useState(false);
+  const [passwordMinLength, setPasswordMinLength] = useState(false);
+  const [mailFormatError, setMailFormatError] = useState(false);
+  const validEmail = /^\w+([.-_+]?\w+)*@\w+([.-]?\w+)*(\.\w{2,10})+$/;
 
   const validarFOrmulario = (submit) => {
     submit.preventDefault();
     if (password_1 !== password_2) {
-      setError(true);
+      setPasswordError(true);
       return;
     }
-    setError(false);
+    setPasswordError(false);
+
+    if (validEmail.test(email)) {
+      setMailFormatError(false);
+    } else {
+      setMailFormatError(true);
+      return;
+    }
+
+    if (password_1.length > 1 && password_1.length < 10) {
+      setPasswordMinLength(true);
+      return;
+    }
+    setPasswordMinLength(false);
   };
+
   return (
     <form className="form__container" onSubmit={validarFOrmulario}>
       <div className="form-group">
@@ -31,7 +48,7 @@ const Formulario = () => {
         <input
           onChange={(element) => setEmail(element.target.value)}
           value={email}
-          type="email"
+          type="text"
           name="email"
           className="form-control"
           placeholder="email@ejemplo.cl"
@@ -56,9 +73,19 @@ const Formulario = () => {
       <Button type="submit" className="btn-1" variant="success">
         Registrarse
       </Button>
-      {error ? (
-        <Alert className="alert__contraseña" variant="danger">
+      {passwordError ? (
+        <Alert className="alert alert__contraseña" variant="danger">
           Las contraseñas no son iguales
+        </Alert>
+      ) : null}
+      {mailFormatError ? (
+        <Alert className="alert alert__mail" variant="danger">
+          Formato de correo incorrecto
+        </Alert>
+      ) : null}
+      {passwordMinLength ? (
+        <Alert className="alert alert__mail" variant="danger">
+          La contraseña debe tener mínimo 10 caractéres
         </Alert>
       ) : null}
     </form>
