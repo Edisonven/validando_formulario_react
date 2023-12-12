@@ -1,11 +1,11 @@
 import Alert from "react-bootstrap/Alert";
 
-function formAlert(error, éxito) {
+function FormAlert({variant, error, éxito}) {
   return (
     <>
-      <Alert variant={variant}>{error}{éxito}</Alert>)
+      <Alert variant={variant}>{éxito}{error}</Alert>
     </>
   );
 }
 
-export default formAlert;
+export default FormAlert;
