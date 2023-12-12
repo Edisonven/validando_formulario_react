@@ -12,7 +12,7 @@ const Formulario = () => {
   const [mailFormatError, setMailFormatError] = useState(false);
   const validEmail = /^\w+([.-_+]?\w+)*@\w+([.-]?\w+)*(\.\w{2,10})+$/;
 
-  const validarFOrmulario = (submit) => {
+  const validarFormulario = (submit) => {
     submit.preventDefault();
     if (password_1 !== password_2) {
       setPasswordError(true);
@@ -34,7 +34,7 @@ const Formulario = () => {
   };
 
   return (
-    <form className="form__container" onSubmit={validarFOrmulario}>
+    <form className="form__container" onSubmit={validarFormulario}>
       <div className="form-group">
         <input
           onChange={(element) => setNombre(element.target.value)}
