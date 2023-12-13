@@ -20,7 +20,7 @@ const Formulario = () => {
     }
     setPasswordError(false);
 
-    if (!validEmail.test(email) && email.length > 1) {
+    if (!validEmail.test(email) && email.length > 0) {
       setMailFormatError(true);
       return;
     }
