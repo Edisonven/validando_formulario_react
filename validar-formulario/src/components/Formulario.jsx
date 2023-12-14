@@ -2,6 +2,7 @@ import Button from "react-bootstrap/Button";
 import { useState } from "react";
 import Alert from "react-bootstrap/Alert";
 
+//Estados que almacenan datos del usuario por medio de inputs
 const Formulario = ({ setError, setExito }) => {
   const [nombre, setNombre] = useState("");
   const [email, setEmail] = useState("");
@@ -10,18 +11,26 @@ const Formulario = ({ setError, setExito }) => {
   const validEmail = /^\w+([.-_+]?\w+)*@\w+([.-]?\w+)*(\.\w{2,10})+$/;
   const [errores, setErrores] = useState(false);
 
+  //Función que valida si las condiciones del formulario se cumplen para enviarlo con éxito
   const validarFormulario = (submit) => {
+    //Función que evita que la página se recargue al presionar el botón de registro
     submit.preventDefault();
+
+    //Condicional que evalúa que ambas contraseñas sean iguales
     if (password_1 !== password_2) {
       return setErrores("Las contraseñas no son iguales");
+      //Condicional que evalúa que el mail sea válido y además que el campo no esté vacío
     } else if (!validEmail.test(email) && email.length > 0) {
       return setErrores("Formato de correo no válido");
+      //Condicional que evalúa que la contraseña sea mínimo 10 caracteres y además el campo no esté vacío
     } else if (password_1.length > 1 && password_1.length < 10) {
       return setErrores("La contraseña debe tener mínimo 10 caracteres");
     }
 
+    //Reseteando errores al no cumplirse las condiciones de arriba
     setErrores("");
 
+    //condicional que evalúa que los campos estén ok para enviar el formulario correctamente o mostrar error en caso de que no sea así
     if (
       nombre.length > 0 &&
       email.length > 0 &&
@@ -36,6 +45,7 @@ const Formulario = ({ setError, setExito }) => {
     }
   };
 
+  //Apartado que renderiza el formulario exportado 
   return (
     <form className="form__container" onSubmit={(e) => validarFormulario(e)}>
       <div className="form-group">
@@ -76,6 +86,7 @@ const Formulario = ({ setError, setExito }) => {
         Registrarse
       </Button>
       {errores ? (
+        //Alerta que muestra si existe algún error o todo está correcto dentro de los input
         <Alert className="alert alert__contraseña" variant="danger">
           {errores}
         </Alert>
