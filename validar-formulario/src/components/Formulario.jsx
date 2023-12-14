@@ -2,50 +2,43 @@ import Button from "react-bootstrap/Button";
 import { useState } from "react";
 import Alert from "react-bootstrap/Alert";
 
-const Formulario = ({ error, setError, setExito, exito }) => {
+const Formulario = ({ setError, setExito }) => {
   const [nombre, setNombre] = useState("");
   const [email, setEmail] = useState("");
   const [password_1, setPasswrod_1] = useState("");
   const [password_2, setPassword_2] = useState("");
-  const [passwordError, setPasswordError] = useState(false);
-  const [passwordMinLength, setPasswordMinLength] = useState(false);
-  const [mailFormatError, setMailFormatError] = useState(false);
   const validEmail = /^\w+([.-_+]?\w+)*@\w+([.-]?\w+)*(\.\w{2,10})+$/;
+  const [errores, setErrores] = useState(false);
 
-  
   const validarFormulario = (submit) => {
     submit.preventDefault();
     if (password_1 !== password_2) {
-      setPasswordError(true);
-      return;
+      return setErrores("Las contraseñas no son iguales");
+    } else if (!validEmail.test(email) && email.length > 0) {
+      return setErrores("Formato de correo no válido");
     }
-    setPasswordError(false);
-
-    if (!validEmail.test(email) && email.length > 0) {
-      setMailFormatError(true);
-      return;
-    }
-    setMailFormatError(false);
-
     if (password_1.length > 1 && password_1.length < 10) {
-      setPasswordMinLength(true);
-      return;
+      return setErrores("La contraseña debe tener mínimo 10 caracteres");
     }
-    setPasswordMinLength(false);
- 
 
-    if (nombre.length > 0 && email.length > 0 && password_1.length > 0 && password_2.length > 0) {
+    setErrores("");
+
+    if (
+      nombre.length > 0 &&
+      email.length > 0 &&
+      password_1.length > 0 &&
+      password_2.length > 0
+    ) {
       setExito("Te has registrado con éxito!");
-
-    } else{
+      setError("");
+    } else {
       setError("Completa todos los campos");
+      setExito("");
     }
-    
-
   };
 
   return (
-    <form className="form__container" onSubmit={(e) =>validarFormulario(e)}>
+    <form className="form__container" onSubmit={(e) => validarFormulario(e)}>
       <div className="form-group">
         <input
           onChange={(element) => setNombre(element.target.value)}
@@ -83,21 +76,7 @@ const Formulario = ({ error, setError, setExito, exito }) => {
       <Button type="submit" className="btn-1" variant="success">
         Registrarse
       </Button>
-      {passwordError ? (
-        <Alert className="alert alert__contraseña" variant="danger">
-          Las contraseñas no son iguales
-        </Alert>
-      ) : null}
-      {mailFormatError ? (
-        <Alert className="alert alert__mail" variant="danger">
-          Formato de correo incorrecto
-        </Alert>
-      ) : null}
-      {passwordMinLength ? (
-        <Alert className="alert alert__mail" variant="danger">
-          La contraseña debe tener mínimo 10 caractéres
-        </Alert>
-      ) : null}
+     {errores ? <Alert className="alert alert__contraseña" variant="danger">{errores}</Alert> : null} 
     </form>
   );
 };
