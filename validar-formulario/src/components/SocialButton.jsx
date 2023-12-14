@@ -1,7 +1,9 @@
-const socialButtons = ({ icons, link }) => {
+const socialButtons = ({icono1,icono2,icono3}) => {
   return (
-    <a href={link}>
-      <img className="icon" src={icons} alt="icono" />
+    <a>
+      <button className="icon">{icono1}</button>
+      <button className="icon">{icono2}</button>
+      <button className="icon">{icono3}</button>
     </a>
   );
 };
