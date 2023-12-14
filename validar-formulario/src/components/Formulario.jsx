@@ -2,7 +2,7 @@ import Button from "react-bootstrap/Button";
 import { useState } from "react";
 import Alert from "react-bootstrap/Alert";
 
-const Formulario = () => {
+const Formulario = ({ error, setError, setExito, exito }) => {
   const [nombre, setNombre] = useState("");
   const [email, setEmail] = useState("");
   const [password_1, setPasswrod_1] = useState("");
@@ -31,6 +31,13 @@ const Formulario = () => {
       return;
     }
     setPasswordMinLength(false);
+
+/*     if (nombre.length > 0 && email.length > 0 && password_1.length > 0 && password_2.length > 0) {
+      setExito(exito);
+    } else {
+      setError(error);
+    } */
+
   };
 
   return (

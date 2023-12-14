@@ -2,7 +2,7 @@ import Formulario from "./Formulario";
 import SocialButtons from "./SocialButton";
 import FormAlert from "./Alert";
 
-const Registro = () => {
+const Registro = ({error, setExito, setError, exito}) => {
   return (
     <div className="container">
       <h1 className="form__title">Crea una cuenta</h1>
@@ -12,7 +12,8 @@ const Registro = () => {
         <SocialButtons icons="./src/assets/github.svg" link="" />
       </div>
       <p className="form__parrafo">O usa tu email para registrarte</p>
-      <Formulario></Formulario>
+      <Formulario error={error} setExito={setExito} setError={setError} exito={exito}></Formulario>
+      <FormAlert error={error} exito={exito}></FormAlert>
     </div>
   );
 };
