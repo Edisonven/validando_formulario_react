@@ -12,6 +12,7 @@ const Formulario = ({ error, setError, setExito, exito }) => {
   const [mailFormatError, setMailFormatError] = useState(false);
   const validEmail = /^\w+([.-_+]?\w+)*@\w+([.-]?\w+)*(\.\w{2,10})+$/;
 
+  
   const validarFormulario = (submit) => {
     submit.preventDefault();
     if (password_1 !== password_2) {
@@ -31,17 +32,20 @@ const Formulario = ({ error, setError, setExito, exito }) => {
       return;
     }
     setPasswordMinLength(false);
+ 
 
-/*     if (nombre.length > 0 && email.length > 0 && password_1.length > 0 && password_2.length > 0) {
-      setExito(exito);
-    } else {
-      setError(error);
-    } */
+    if (nombre.length > 0 && email.length > 0 && password_1.length > 0 && password_2.length > 0) {
+      setExito("Te has registrado con éxito!");
+
+    } else{
+      setError("Completa todos los campos");
+    }
+    
 
   };
 
   return (
-    <form className="form__container" onSubmit={validarFormulario}>
+    <form className="form__container" onSubmit={(e) =>validarFormulario(e)}>
       <div className="form-group">
         <input
           onChange={(element) => setNombre(element.target.value)}

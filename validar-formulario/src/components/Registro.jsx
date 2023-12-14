@@ -13,7 +13,8 @@ const Registro = ({error, setExito, setError, exito}) => {
       </div>
       <p className="form__parrafo">O usa tu email para registrarte</p>
       <Formulario error={error} setExito={setExito} setError={setError} exito={exito}></Formulario>
-      <FormAlert error={error} exito={exito}></FormAlert>
+      <FormAlert variant="danger" error={error}></FormAlert>
+      <FormAlert variant="success" exito={exito}></FormAlert>
     </div>
   );
 };

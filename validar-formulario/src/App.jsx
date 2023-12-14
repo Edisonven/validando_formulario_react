@@ -4,8 +4,8 @@ import Registro from "./components/Registro";
 import { useState } from "react";
 
 function App() {
-  const [error, setError] = useState("Completa todos los campos")
-  const [exito, setExito] = useState("Formulario enviado")
+  const [error, setError] = useState("")
+  const [exito, setExito] = useState("")
   return (
     <>
       <Registro error={error} exito={exito} setError={setError} setExito={setExito}></Registro>
