@@ -16,8 +16,7 @@ const Formulario = ({ setError, setExito }) => {
       return setErrores("Las contraseñas no son iguales");
     } else if (!validEmail.test(email) && email.length > 0) {
       return setErrores("Formato de correo no válido");
-    }
-    if (password_1.length > 1 && password_1.length < 10) {
+    } else if (password_1.length > 1 && password_1.length < 10) {
       return setErrores("La contraseña debe tener mínimo 10 caracteres");
     }
 
@@ -29,10 +28,10 @@ const Formulario = ({ setError, setExito }) => {
       password_1.length > 0 &&
       password_2.length > 0
     ) {
-      setExito("Te has registrado con éxito!");
+      setExito("¡Te has registrado con éxito!");
       setError("");
     } else {
-      setError("Completa todos los campos");
+      setError("¡Completa todos los campos!");
       setExito("");
     }
   };
@@ -76,7 +75,11 @@ const Formulario = ({ setError, setExito }) => {
       <Button type="submit" className="btn-1" variant="success">
         Registrarse
       </Button>
-     {errores ? <Alert className="alert alert__contraseña" variant="danger">{errores}</Alert> : null} 
+      {errores ? (
+        <Alert className="alert alert__contraseña" variant="danger">
+          {errores}
+        </Alert>
+      ) : null}
     </form>
   );
 };
