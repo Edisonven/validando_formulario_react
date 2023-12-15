@@ -17,7 +17,7 @@
 .container {
   border: 1px solid #ffffff69;
   border-radius: 20px;
-  padding: 50px;
+  padding: 15px 40px;
   width: max-content;
   color: var(--background-color-2);
   backdrop-filter: blur(10px);
@@ -34,15 +34,17 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  gap: 40px;
+  gap: 60px;
   margin-bottom: 30px;
 }
 .icon {
-  transform: scale(1.6);
-  border: 1px solid var(--background-color-2);
-  border-radius: 50%;
-  padding: 5px;
+  border: 1px solid rgba(0, 0, 0, 0.479);
+  border-radius: 15% 50%;
   transition: opacity linear 0.2s;
+  width: 50px;
+  height: 50px;
+  scale: 1.5;
+  background-color: white;
 }
 .icon:hover {
   opacity: 70%;
@@ -51,7 +53,7 @@ input {
   margin-bottom: 15px;
 }
 .btn-1 {
-  margin-top: 20px;
+  margin-top: 5px;
   width: 100%;
 }
 .alert {

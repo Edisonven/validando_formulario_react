@@ -9,9 +9,10 @@ const Registro = ({ error, setExito, setError, exito }) => {
     <div className="container">
       <h1 className="form__title">Crea una cuenta</h1>
       <div className="icons__container">
-        <SocialButtons icons="./src/assets/facebook.svg" link="" />
-        <SocialButtons icons="./src/assets/linkedin.svg" link="" />
-        <SocialButtons icons="./src/assets/github.svg" link="" />
+      <SocialButtons 
+        icono1={<i className="fa-brands fa-facebook fa-2xl"></i>} 
+        icono2={<i className="fa-brands fa-github fa-2xl"></i>} 
+        icono3={<i className="fa-brands fa-linkedin-in fa-2xl"></i>}/>
       </div>
       <p className="form__parrafo">O usa tu email para registrarte</p>
       <Formulario
